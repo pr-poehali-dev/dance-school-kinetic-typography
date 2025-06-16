@@ -77,28 +77,39 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] animate-scale-in">
+      <DialogContent className="sm:max-w-[500px] animate-scale-in bg-dark-purple/95 border-primary/30">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-light-purple bg-clip-text text-transparent">
+          <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-light-purple bg-clip-text text-transparent font-montserrat animate-glow">
             Записаться на занятие
           </DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="name">Имя</Label>
+            <div
+              className="animate-slide-up"
+              style={{ animationDelay: "0.1s", animationFillMode: "both" }}
+            >
+              <Label htmlFor="name" className="text-white font-open-sans">
+                Имя
+              </Label>
               <Input
                 id="name"
                 value={formData.name}
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
+                className="bg-white/10 border-primary/30 text-white placeholder:text-gray-400 focus:border-primary transition-colors"
                 required
               />
             </div>
-            <div>
-              <Label htmlFor="phone">Телефон</Label>
+            <div
+              className="animate-slide-up"
+              style={{ animationDelay: "0.2s", animationFillMode: "both" }}
+            >
+              <Label htmlFor="phone" className="text-white font-open-sans">
+                Телефон
+              </Label>
               <Input
                 id="phone"
                 type="tel"
@@ -106,6 +117,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                 onChange={(e) =>
                   setFormData({ ...formData, phone: e.target.value })
                 }
+                className="bg-white/10 border-primary/30 text-white placeholder:text-gray-400 focus:border-primary transition-colors"
                 required
               />
             </div>

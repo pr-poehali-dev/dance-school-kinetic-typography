@@ -82,27 +82,31 @@ const Contacts = () => {
                 {contactInfo.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 hover-scale"
+                    className="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-500 hover-scale animate-slide-up group hover:shadow-lg hover:shadow-primary/20"
+                    style={{
+                      animationDelay: `${index * 0.1}s`,
+                      animationFillMode: "both",
+                    }}
                   >
                     <div className="flex items-start gap-4">
-                      <div className="bg-primary/20 p-3 rounded-lg">
+                      <div className="bg-primary/20 p-3 rounded-lg group-hover:bg-primary/30 transition-colors duration-300">
                         <Icon
                           name={item.icon as any}
                           size={24}
-                          className="text-primary"
+                          className="text-primary group-hover:scale-110 transition-transform"
                         />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-white mb-2">
+                        <h3 className="text-lg font-semibold text-white mb-2 font-montserrat group-hover:text-primary transition-colors">
                           {item.title}
                         </h3>
-                        <p className="text-gray-300 whitespace-pre-line">
+                        <p className="text-gray-300 whitespace-pre-line font-open-sans">
                           {item.content}
                         </p>
                         {item.link && (
                           <a
                             href={item.link}
-                            className="text-primary hover:text-light-purple transition-colors inline-block mt-2 story-link"
+                            className="text-primary hover:text-light-purple transition-colors inline-block mt-2 story-link font-medium"
                           >
                             Связаться
                           </a>

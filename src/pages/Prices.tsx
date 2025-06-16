@@ -116,38 +116,47 @@ const Prices = () => {
               {subscriptions.map((plan, index) => (
                 <div
                   key={index}
-                  className={`relative bg-white/5 backdrop-blur-sm rounded-2xl p-8 border-2 transition-all duration-300 hover-scale animate-scale-in ${
+                  className={`relative bg-white/5 backdrop-blur-sm rounded-2xl p-8 border-2 transition-all duration-500 hover-scale animate-scale-in group hover:shadow-2xl ${
                     plan.popular
-                      ? "border-primary scale-105"
-                      : "border-transparent hover:border-primary/50"
+                      ? "border-primary scale-105 shadow-lg shadow-primary/30"
+                      : "border-transparent hover:border-primary/50 hover:shadow-primary/20"
                   }`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  style={{
+                    animationDelay: `${index * 0.15}s`,
+                    animationFillMode: "both",
+                  }}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <Badge className="bg-primary text-white px-4 py-1">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 animate-bounce-subtle">
+                      <Badge className="bg-primary text-white px-4 py-1 shadow-lg">
                         Популярный
                       </Badge>
                     </div>
                   )}
 
                   <div
-                    className={`text-center mb-6 p-6 rounded-xl bg-gradient-to-br ${plan.color}`}
+                    className={`text-center mb-6 p-6 rounded-xl bg-gradient-to-br ${plan.color} group-hover:scale-105 transition-transform duration-300`}
                   >
-                    <h3 className="text-2xl font-bold text-white mb-2">
+                    <h3 className="text-2xl font-bold text-white mb-2 font-montserrat">
                       {plan.name}
                     </h3>
                     <div className="text-white/80 mb-4">
-                      <span className="text-sm line-through">
+                      <span className="text-sm line-through animate-fade-in">
                         {plan.originalPrice} ₽
                       </span>
                     </div>
                     <div className="text-white">
-                      <span className="text-4xl font-bold">{plan.price}</span>
+                      <span className="text-4xl font-bold font-montserrat animate-glow">
+                        {plan.price}
+                      </span>
                       <span className="text-lg"> ₽</span>
                     </div>
-                    <p className="text-white/90 mt-2">{plan.period}</p>
-                    <p className="text-white/70 text-sm">{plan.duration}</p>
+                    <p className="text-white/90 mt-2 font-open-sans">
+                      {plan.period}
+                    </p>
+                    <p className="text-white/70 text-sm font-open-sans">
+                      {plan.duration}
+                    </p>
                   </div>
 
                   <ul className="space-y-3 mb-8">

@@ -131,17 +131,21 @@ const Schedule = () => {
           </div>
 
           {/* Filters */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8 animate-scale-in">
-            {filters.map((filter) => (
+          <div
+            className="flex flex-wrap justify-center gap-3 mb-8 animate-slide-up"
+            style={{ animationDelay: "0.2s", animationFillMode: "both" }}
+          >
+            {filters.map((filter, index) => (
               <Button
                 key={filter.id}
                 variant={selectedFilter === filter.id ? "default" : "outline"}
                 onClick={() => setSelectedFilter(filter.id)}
-                className={`hover-scale ${
+                className={`hover-scale transition-all duration-300 ${
                   selectedFilter === filter.id
-                    ? "bg-primary hover:bg-primary/90"
-                    : "border-primary text-primary hover:bg-primary hover:text-white"
+                    ? "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/30"
+                    : "border-primary text-primary hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20"
                 }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {filter.label}
               </Button>
@@ -176,7 +180,7 @@ const Schedule = () => {
                       <td className="p-4 text-center">
                         {row.monday && (
                           <Badge
-                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale"
+                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale transition-all duration-300 hover:shadow-md"
                             onClick={() => setIsBookingOpen(true)}
                           >
                             {row.monday}
@@ -186,7 +190,7 @@ const Schedule = () => {
                       <td className="p-4 text-center">
                         {row.tuesday && (
                           <Badge
-                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale"
+                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale transition-all duration-300 hover:shadow-md"
                             onClick={() => setIsBookingOpen(true)}
                           >
                             {row.tuesday}
@@ -196,7 +200,7 @@ const Schedule = () => {
                       <td className="p-4 text-center">
                         {row.wednesday && (
                           <Badge
-                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale"
+                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale transition-all duration-300 hover:shadow-md"
                             onClick={() => setIsBookingOpen(true)}
                           >
                             {row.wednesday}
@@ -206,7 +210,7 @@ const Schedule = () => {
                       <td className="p-4 text-center">
                         {row.thursday && (
                           <Badge
-                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale"
+                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale transition-all duration-300 hover:shadow-md"
                             onClick={() => setIsBookingOpen(true)}
                           >
                             {row.thursday}
@@ -216,7 +220,7 @@ const Schedule = () => {
                       <td className="p-4 text-center">
                         {row.friday && (
                           <Badge
-                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale"
+                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale transition-all duration-300 hover:shadow-md"
                             onClick={() => setIsBookingOpen(true)}
                           >
                             {row.friday}
@@ -226,7 +230,7 @@ const Schedule = () => {
                       <td className="p-4 text-center">
                         {row.saturday && (
                           <Badge
-                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale"
+                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale transition-all duration-300 hover:shadow-md"
                             onClick={() => setIsBookingOpen(true)}
                           >
                             {row.saturday}
@@ -236,7 +240,7 @@ const Schedule = () => {
                       <td className="p-4 text-center">
                         {row.sunday && (
                           <Badge
-                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale"
+                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white cursor-pointer hover-scale transition-all duration-300 hover:shadow-md"
                             onClick={() => setIsBookingOpen(true)}
                           >
                             {row.sunday}

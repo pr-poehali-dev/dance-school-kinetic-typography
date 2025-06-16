@@ -90,23 +90,26 @@ const Teachers = () => {
             {teachers.map((teacher, index) => (
               <div
                 key={index}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 hover-scale animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover-scale animate-scale-in group hover:shadow-2xl hover:shadow-primary/20"
+                style={{
+                  animationDelay: `${index * 0.15}s`,
+                  animationFillMode: "both",
+                }}
               >
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="md:w-48 flex-shrink-0">
                     <img
                       src={teacher.image}
                       alt={teacher.name}
-                      className="w-full h-48 md:h-64 object-cover rounded-xl"
+                      className="w-full h-48 md:h-64 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
 
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-2">
+                    <h3 className="text-2xl font-bold text-white mb-2 font-montserrat group-hover:text-primary transition-colors duration-300">
                       {teacher.name}
                     </h3>
-                    <p className="text-primary font-semibold mb-4">
+                    <p className="text-primary font-semibold mb-4 font-open-sans group-hover:glow">
                       {teacher.title}
                     </p>
 
@@ -118,14 +121,14 @@ const Teachers = () => {
                     </div>
 
                     <div className="mb-4">
-                      <p className="text-sm text-gray-400 mb-2">
+                      <p className="text-sm text-gray-400 mb-2 font-open-sans">
                         Специализация:
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {teacher.styles.map((style, styleIndex) => (
                           <Badge
                             key={styleIndex}
-                            className="bg-primary/20 text-primary"
+                            className="bg-primary/20 text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105 cursor-default"
                           >
                             {style}
                           </Badge>

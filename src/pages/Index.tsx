@@ -25,23 +25,32 @@ const Index = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 text-center text-white px-4 animate-fade-in">
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-[scale-in_1s_ease-out]">
-            <span className="bg-gradient-to-r from-primary via-light-purple to-white bg-clip-text text-transparent block">
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 font-montserrat">
+            <span className="bg-gradient-to-r from-primary via-light-purple to-white bg-clip-text text-transparent block animate-glow">
               DANCE
             </span>
-            <span className="bg-gradient-to-r from-white via-light-purple to-primary bg-clip-text text-transparent block animate-[slide-in-right_1s_ease-out_0.3s_both]">
+            <span
+              className="bg-gradient-to-r from-white via-light-purple to-primary bg-clip-text text-transparent block animate-slide-in-right"
+              style={{ animationDelay: "0.3s", animationFillMode: "both" }}
+            >
               STUDIO
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl mb-8 text-gray-300 animate-[fade-in_1s_ease-out_0.6s_both]">
+          <p
+            className="text-xl md:text-2xl mb-8 text-gray-300 animate-slide-up font-open-sans"
+            style={{ animationDelay: "0.6s", animationFillMode: "both" }}
+          >
             Почувствуй ритм. Открой себя. Танцуй с нами.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fade-in_1s_ease-out_0.9s_both]">
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in"
+            style={{ animationDelay: "0.9s", animationFillMode: "both" }}
+          >
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg hover-scale"
+              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg hover-scale transition-all duration-300 hover:shadow-lg hover:shadow-primary/50"
               onClick={() => setIsBookingOpen(true)}
             >
               Записаться на занятие
@@ -49,11 +58,28 @@ const Index = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-dark-purple px-8 py-4 text-lg hover-scale"
+              className="border-white text-white hover:bg-white hover:text-dark-purple px-8 py-4 text-lg hover-scale transition-all duration-300"
             >
               Смотреть видео
             </Button>
           </div>
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute top-1/4 left-10 text-primary/30 animate-float hidden md:block">
+          <Icon name="Music" size={32} />
+        </div>
+        <div
+          className="absolute top-1/3 right-10 text-light-purple/30 animate-float hidden md:block"
+          style={{ animationDelay: "1s" }}
+        >
+          <Icon name="Heart" size={24} />
+        </div>
+        <div
+          className="absolute bottom-1/4 left-1/4 text-white/20 animate-bounce-subtle hidden md:block"
+          style={{ animationDelay: "2s" }}
+        >
+          <Icon name="Star" size={20} />
         </div>
 
         {/* Scroll Indicator */}
@@ -82,19 +108,23 @@ const Index = () => {
             ].map((stat, index) => (
               <div
                 key={index}
-                className="text-center animate-scale-in hover-scale"
+                className="text-center animate-scale-in hover-scale group cursor-pointer"
+                style={{
+                  animationDelay: `${index * 0.2}s`,
+                  animationFillMode: "both",
+                }}
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-4 group-hover:shadow-lg group-hover:shadow-primary/50 transition-all duration-300">
                   <Icon
                     name={stat.icon as any}
                     size={24}
-                    className="text-white"
+                    className="text-white group-hover:scale-110 transition-transform"
                   />
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-2">
+                <h3 className="text-3xl font-bold text-white mb-2 font-montserrat group-hover:text-primary transition-colors">
                   {stat.title}
                 </h3>
-                <p className="text-gray-300">{stat.subtitle}</p>
+                <p className="text-gray-300 font-open-sans">{stat.subtitle}</p>
               </div>
             ))}
           </div>
